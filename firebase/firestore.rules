@@ -1,0 +1,75 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isSignedIn()
+        && exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+
+    match /users/{userId} {
+      allow read: if isAdmin() && request.auth.uid == userId;
+      allow write: if false;
+    }
+
+    match /hero/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /about/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /skills/{skillId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /projects/{projectId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /certificates/{certId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /experience/{expId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /messages/{msgId} {
+      allow read: if isAdmin();
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message', 'createdAt', 'read'])
+        && request.resource.data.read == false
+        && request.resource.data.name is string
+        && request.resource.data.email is string
+        && request.resource.data.message is string
+        && request.resource.data.name.size() > 0
+        && request.resource.data.name.size() < 200
+        && request.resource.data.email.size() > 0
+        && request.resource.data.email.size() < 320
+        && request.resource.data.message.size() > 0
+        && request.resource.data.message.size() < 8000;
+      allow update, delete: if isAdmin();
+    }
+
+    match /settings/{document=**} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    match /analytics/{document=**} {
+      allow read: if isAdmin();
+      allow write: if isAdmin();
+    }
+  }
+}

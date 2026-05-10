@@ -1,0 +1,34 @@
+@import "tailwindcss";
+@import "../styles/cyber.css";
+
+:root {
+  --background: #050816;
+  --foreground: #e2e8f0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-cyber-bg: #050816;
+  --color-cyber-card: #0f172a;
+  --color-neon-blue: #38bdf8;
+  --color-neon-purple: #8b5cf6;
+  --color-cyber-text: #e2e8f0;
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.35);
+  color: #f8fafc;
+}

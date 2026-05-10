@@ -1,0 +1,48 @@
+@keyframes cyber-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.55;
+    filter: drop-shadow(0 0 12px rgba(56, 189, 248, 0.35));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 22px rgba(139, 92, 246, 0.45));
+  }
+}
+
+@keyframes float-y {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+.cyber-glow-text {
+  animation: cyber-glow-pulse 4s ease-in-out infinite;
+}
+
+.cyber-float {
+  animation: float-y 5s ease-in-out infinite;
+}
+
+.cyber-grid-bg {
+  background-image: linear-gradient(
+      rgba(56, 189, 248, 0.06) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.06) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: grid-move 24s linear infinite;
+}
