@@ -117,7 +117,7 @@ function CyberFigure({
       {asset?.kind === "glb" ? (
         <Suspense fallback={<AbstractGeometry />}>
           {/* scale=1.3, positionY=-0.5 → бүтнээр голд харуулна */}
-          <HeroAvatarGlb url={asset.url} scale={1.05} positionY={-0.5} />
+          <HeroAvatarGlb url={asset.url} scale={0.9} positionY={-0.1} />
         </Suspense>
       ) : asset?.kind === "obj" ? (
         <Suspense fallback={<AbstractGeometry />}>
