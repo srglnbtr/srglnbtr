@@ -69,15 +69,17 @@ export interface MessageDoc {
   createdAt: Timestamp;
 }
 
-export interface SocialLinks {
-  github: string;
-  linkedin: string;
-  twitter: string;
-  email: string;
-}
+/* ❌ OLD SocialLinks REMOVE хийсэн (linkedIn/twitter/email conflict үүсгэж байсан) */
 
+/* ✅ SINGLE SOURCE OF TRUTH */
 export interface SettingsDoc {
-  socialLinks: SocialLinks;
+  socialLinks: {
+    github: string;
+    facebook: string;
+    instagram: string;
+    gmail: string;
+  };
+
   cvUrl: string;
 }
 

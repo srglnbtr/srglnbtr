@@ -21,6 +21,7 @@ export function ContactSection() {
     e.preventDefault();
     setErr("");
     setStatus("sending");
+
     try {
       await addDoc(collection(db, COLLECTIONS.messages), {
         name: name.trim(),
@@ -29,6 +30,7 @@ export function ContactSection() {
         read: false,
         createdAt: Timestamp.now(),
       });
+
       setStatus("ok");
       setName("");
       setEmail("");
@@ -51,6 +53,8 @@ export function ContactSection() {
         >
           <GlassCard className="mx-auto max-w-xl p-6 md:p-8">
             <form onSubmit={onSubmit} className="space-y-4">
+              
+              {/* Name */}
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-slate-400" htmlFor="name">
                   Нэр
@@ -65,6 +69,8 @@ export function ContactSection() {
                   placeholder="Таны нэр"
                 />
               </div>
+
+              {/* Email */}
               <div>
                 <label className="mb-1.5 block text-xs font-medium text-slate-400" htmlFor="email">
                   И-мэйл
@@ -80,11 +86,10 @@ export function ContactSection() {
                   placeholder="you@example.com"
                 />
               </div>
+
+              {/* Message */}
               <div>
-                <label
-                  className="mb-1.5 block text-xs font-medium text-slate-400"
-                  htmlFor="message"
-                >
+                <label className="mb-1.5 block text-xs font-medium text-slate-400" htmlFor="message">
                   Мессеж
                 </label>
                 <textarea
@@ -99,11 +104,18 @@ export function ContactSection() {
                 />
               </div>
 
-              {status === "ok" ? (
-                <p className="text-sm font-medium text-emerald-400">Амжилттай илгээгдлээ. Баярлалаа!</p>
-              ) : null}
-              {status === "err" ? <p className="text-sm text-red-400">{err}</p> : null}
+              {/* Status */}
+              {status === "ok" && (
+                <p className="text-sm font-medium text-emerald-400">
+                  Амжилттай илгээгдлээ. Баярлалаа!
+                </p>
+              )}
 
+              {status === "err" && (
+                <p className="text-sm text-red-400">{err}</p>
+              )}
+
+              {/* Button */}
               <NeonButton
                 type="submit"
                 disabled={status === "sending"}
@@ -112,6 +124,20 @@ export function ContactSection() {
                 <Send className="h-4 w-4" />
                 {status === "sending" ? "Илгээж байна..." : "Илгээх"}
               </NeonButton>
+
+              {/* CONTACT INFO */}
+              <div className="mt-6 border-t border-white/10 pt-4 text-sm text-slate-300 space-y-1">
+                <p>📱 Утас: +976 85405520</p>
+                <p>📘 Facebook: Э. Сэргэлэнбаатар</p>
+                <p>📸 Instagram: srglnbtr__</p>
+                <p>📧 Email: srglnbtr555@gmail.com</p>
+              </div>
+
+              {/* COPYRIGHT */}
+              <div className="mt-4 text-xs text-slate-500 border-t border-white/10 pt-3">
+                © 2026 Бүх эрх хуулиар хамгаалагдсан. Хуулбарлахыг хориглоно.
+              </div>
+
             </form>
           </GlassCard>
         </motion.div>

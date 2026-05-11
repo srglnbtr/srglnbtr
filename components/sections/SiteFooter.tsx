@@ -38,7 +38,7 @@ export function SiteFooter() {
         <div>
           <p className="text-sm font-bold tracking-[0.2em] text-cyan-300">SRGLNBTR</p>
           <p className="mt-2 max-w-md text-xs text-slate-500">
-            Next.js · Firebase · Framer Motion · React Three Fiber. Бүх эрх хуулиар хамгаалагдсан.
+          © 2026 Бүх эрх хуулиар хамгаалагдсан. Зөвшөөрөлгүй хуулбарлах, ашиглахыг хориглоно.
           </p>
         </div>
         <div className="flex flex-col items-center gap-3 md:items-end">

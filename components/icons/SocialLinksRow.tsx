@@ -2,9 +2,14 @@
 
 import Link from "next/link";
 import { Mail } from "lucide-react";
-import type { SocialLinks } from "@/types";
+import type { SettingsDoc } from "@/types";
 import { cn } from "@/lib/utils";
-import { IconGitHub, IconLinkedIn, IconTwitter } from "@/components/icons/BrandIcons";
+
+import {
+  IconGitHub,
+  IconFacebook,
+  IconInstagram,
+} from "@/components/icons/BrandIcons";
 
 type IconComp = React.ComponentType<{ className?: string }>;
 
@@ -12,15 +17,31 @@ export function SocialLinksRow({
   links,
   className,
 }: {
-  links: SocialLinks;
+  links: SettingsDoc["socialLinks"];
   className?: string;
 }) {
   const items: { href: string; label: string; Icon: IconComp }[] = [
-    { href: links.github, label: "GitHub", Icon: IconGitHub },
-    { href: links.linkedin, label: "LinkedIn", Icon: IconLinkedIn },
-    { href: links.twitter, label: "Twitter", Icon: IconTwitter },
-    { href: links.email, label: "И-мэйл", Icon: Mail },
-  ].filter((x) => x.href && x.href !== "#");
+    {
+      href: links.github,
+      label: "GitHub",
+      Icon: IconGitHub,
+    },
+    {
+      href: links.facebook,
+      label: "Facebook",
+      Icon: IconFacebook,
+    },
+    {
+      href: links.instagram,
+      label: "Instagram",
+      Icon: IconInstagram,
+    },
+    {
+      href: `mailto:${links.gmail}`,
+      label: "Gmail",
+      Icon: Mail,
+    },
+  ].filter((x) => x.href && x.href.trim() !== "");
 
   return (
     <div className={cn("flex flex-wrap gap-3", className)}>

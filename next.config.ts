@@ -17,6 +17,16 @@ const nextConfig: NextConfig = {
         hostname: "storage.googleapis.com",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "i.imgur.com",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "imgur.com",
+        pathname: "/**",
+      },
     ],
   },
 };
