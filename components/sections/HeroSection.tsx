@@ -104,7 +104,7 @@ export function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative scroll-mt-11 pt-2"
+      className="relative scroll-mt-16 pt-10"
       onMouseMove={onMouseMove}
       onMouseLeave={onMouseLeave}
     >
