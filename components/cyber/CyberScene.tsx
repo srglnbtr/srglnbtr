@@ -183,7 +183,7 @@ export function CyberScene({ pointer = { x: 0, y: 0 } }: CyberSceneProps) {
   return (
     <div className="h-[520px] w-full md:h-[650px]">
       <Canvas
-        camera={{ position: [0, 0.8, 5.2], fov: 38 }}
+        camera={{ position: [0, 2.5, 5.5], fov: 38 }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}
@@ -207,7 +207,7 @@ export function CyberScene({ pointer = { x: 0, y: 0 } }: CyberSceneProps) {
           intensity={22}
           color="#f0abfc"
           castShadow={false}
-        />
+          />
         <CyberFigure pointerRef={pointerRef} asset={asset} />
       </Canvas>
     </div>
