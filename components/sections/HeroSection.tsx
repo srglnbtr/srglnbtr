@@ -114,7 +114,7 @@ export function HeroSection() {
           transition={{ type: "spring", stiffness: 120, damping: 18 }}
         >
           <p className="mb-3 text-xs font-semibold uppercase tracking-[0.35em] text-violet-300/90">
-            Кибер портфолио
+            Танилцуулга
           </p>
           <h1 className="cyber-glow-text text-5xl font-black tracking-tight text-cyber-text md:text-6xl lg:text-7xl">
             <span className="bg-gradient-to-br from-cyan-300 via-sky-200 to-violet-400 bg-clip-text text-transparent">
