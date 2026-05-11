@@ -11,6 +11,7 @@ service cloud.firestore {
         && get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
 
+    // Өөрийн профайлыг унших — админ эсэхийг клиент шалгахад хэрэгтэй (бичих зөвхөн Console/Admin SDK)
     match /users/{userId} {
       allow read: if isAdmin() && request.auth.uid == userId;
       allow write: if false;
@@ -48,17 +49,12 @@ service cloud.firestore {
 
     match /messages/{msgId} {
       allow read: if isAdmin();
-      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message', 'createdAt', 'read'])
-        && request.resource.data.read == false
+      allow create: if request.resource.data.keys().hasAll(['name', 'email', 'message', 'read', 'createdAt'])
         && request.resource.data.name is string
         && request.resource.data.email is string
         && request.resource.data.message is string
-        && request.resource.data.name.size() > 0
-        && request.resource.data.name.size() < 200
-        && request.resource.data.email.size() > 0
-        && request.resource.data.email.size() < 320
-        && request.resource.data.message.size() > 0
-        && request.resource.data.message.size() < 8000;
+        && request.resource.data.read == false
+        && request.resource.data.createdAt is timestamp;
       allow update, delete: if isAdmin();
     }
 
@@ -68,8 +64,7 @@ service cloud.firestore {
     }
 
     match /analytics/{document=**} {
-      allow read: if isAdmin();
-      allow write: if isAdmin();
+      allow read, write: if isAdmin();
     }
   }
 }
