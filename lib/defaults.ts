@@ -29,13 +29,12 @@ export const defaultAbout: AboutDoc = {
   ],
 };
 
-export const defaultSettings = {
+export const defaultSettings: SettingsDoc = {
   socialLinks: {
     facebook: "",
     instagram: "",
     github: "",
     gmail: "",
   },
-
   cvUrl: "",
 };
