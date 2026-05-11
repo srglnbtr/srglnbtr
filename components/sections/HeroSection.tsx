@@ -53,7 +53,7 @@ function useTyping(phrases: string[], typingSpeed = 95, pause = 1600) {
 }
 
 export function HeroSection() {
-  const { offset, onMouseMove, onMouseLeave } = useMouseParallax(22);
+  const { offset, norm, onMouseMove, onMouseLeave } = useMouseParallax(22);
   const [hero, setHero] = useState<HeroDoc>(defaultHero);
   const [settings, setSettings] = useState<SettingsDoc>(defaultSettings);
 
@@ -155,7 +155,7 @@ export function HeroSection() {
           className="relative"
         >
           <div className="pointer-events-none absolute -inset-6 rounded-3xl bg-gradient-to-tr from-cyan-500/15 to-violet-600/15 blur-2xl" />
-          <CyberSceneDynamic />
+          <CyberSceneDynamic pointer={{ x: norm.x * 2, y: norm.y * 2 }} />
         </motion.div>
       </div>
     </section>

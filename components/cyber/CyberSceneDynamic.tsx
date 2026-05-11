@@ -1,8 +1,9 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { ComponentProps } from "react";
 
-export const CyberSceneDynamic = dynamic(
+const CyberSceneLazy = dynamic(
   () => import("./CyberScene").then((m) => m.CyberScene),
   {
     ssr: false,
@@ -13,3 +14,9 @@ export const CyberSceneDynamic = dynamic(
     ),
   },
 );
+
+export type CyberSceneDynamicProps = ComponentProps<typeof CyberSceneLazy>;
+
+export function CyberSceneDynamic(props: CyberSceneDynamicProps) {
+  return <CyberSceneLazy {...props} />;
+}
