@@ -181,9 +181,9 @@ export function CyberScene({ pointer = { x: 0, y: 0 } }: CyberSceneProps) {
   }, []);
 
   return (
-    <div className="h-[300px] w-full md:h-[400px]">
+    <div className="h-[520px] w-full md:h-[650px]">
       <Canvas
-        camera={{ position: [0, 0.15, 4.1], fov: 42 }}
+        camera={{ position: [0, 0.8, 5.2], fov: 38 }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}

@@ -18,7 +18,7 @@ type HeroAvatarGlbProps = {
  * public/ доторх GLB (жишээ: /models/avatar.glb).
  * Blender / Ready Player Me / Spline export гэх мэтээр үүсгэсэн загварыг ашиглана.
  */
-export function HeroAvatarGlb({ url, scale = 1.65, positionY = 0 }: HeroAvatarGlbProps) {
+export function HeroAvatarGlb({ url, scale = 0.66, positionY = 0 }: HeroAvatarGlbProps) {
   const { scene } = useGLTF(url);
   const clone = useMemo(() => SkeletonUtils.clone(scene), [scene]);
 
