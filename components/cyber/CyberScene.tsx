@@ -90,7 +90,7 @@ function HeroMouseRig({
 
     const { x: nx, y: ny } = pointerRef.current;
     const targetY = nx * 0.85;
-    const targetX = ny * -0.55;
+    const targetX = ny * 0.55; // засварласан: урвуу хөдөлгөөн залруулсан
     g.rotation.y = MathUtils.lerp(g.rotation.y, targetY, 0.1);
     g.rotation.x = MathUtils.lerp(g.rotation.x, targetX, 0.1);
 
@@ -116,7 +116,8 @@ function CyberFigure({
     <HeroMouseRig pointerRef={pointerRef}>
       {asset?.kind === "glb" ? (
         <Suspense fallback={<AbstractGeometry />}>
-          <HeroAvatarGlb url={asset.url} />
+          {/* scale=1.3, positionY=-0.5 → бүтнээр голд харуулна */}
+          <HeroAvatarGlb url={asset.url} scale={1.05} positionY={-0.5} />
         </Suspense>
       ) : asset?.kind === "obj" ? (
         <Suspense fallback={<AbstractGeometry />}>
@@ -181,9 +182,11 @@ export function CyberScene({ pointer = { x: 0, y: 0 } }: CyberSceneProps) {
   }, []);
 
   return (
-    <div className="h-[550px] w-full md:h-[650px]">
+    // өндрийг томруулсан
+    <div className="h-[550px] w-full md:h-[750px]">
       <Canvas
-        camera={{ position: [0, 2.5, 5.5], fov: 38 }}
+        // камерыг буцааж татаж, доошлуулж харна
+        camera={{ position: [0, 1.5, 7.5], fov: 45 }}
         dpr={[1, 2]}
         gl={{ alpha: true, antialias: true }}
         style={{ background: "transparent" }}
@@ -207,7 +210,7 @@ export function CyberScene({ pointer = { x: 0, y: 0 } }: CyberSceneProps) {
           intensity={22}
           color="#f0abfc"
           castShadow={false}
-          />
+        />
         <CyberFigure pointerRef={pointerRef} asset={asset} />
       </Canvas>
     </div>
